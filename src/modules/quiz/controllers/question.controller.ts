@@ -22,7 +22,7 @@ export class QuestionsController {
   @Post('/')
   @HttpCode(201)
   @UsePipes(ValidationPipe)
-  createQuestion(@Body() question: CreateQuestionDto) {
-    return { data: question, message: 'Question created successfully!'};
+  async createQuestion(@Body() question: CreateQuestionDto) {
+    return await this.questionService.createQuestion(question);
   }
 }
